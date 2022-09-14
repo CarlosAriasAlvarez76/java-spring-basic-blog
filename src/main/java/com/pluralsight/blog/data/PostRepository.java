@@ -52,8 +52,10 @@ public class PostRepository {
     }
 
     public Post findById(Long id) {
-        List<Post> newPost = new ArrayList<>();
-        newPost = ALL_POSTS.stream().filter(k->k.getId().equals(id)).collect(Collectors.toList());
-        return newPost.get(0);
+        for (Post post : ALL_POSTS){
+            if (post.getId() == id)
+                return post;
+        }
+        return null;
     }
 }
